@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func testOneMonthBefore(t *testing.T) {
+func TestOneMonthBefore(t *testing.T) {
 	testDate := time.Now().Sub(time.Month * 1)
 
 	result, err := age.GetAge(testDate.Format("2006-Jan-07"))
@@ -16,7 +16,7 @@ func testOneMonthBefore(t *testing.T) {
 	assert.Equals(t, 0, age.Years)
 }
 
-func testOneYearOneMonthBefore(t *testing.T) {
+func TestOneYearOneMonthBefore(t *testing.T) {
 	testDate := time.Now().Sub(time.Year * 1 + time.Month * 1)
 
 	result, err := age.GetAge(testDate.Format("2006-Jan-07"))
@@ -26,7 +26,7 @@ func testOneYearOneMonthBefore(t *testing.T) {
 	assert.Equals(t, 1, age.Years)
 }
 
-func testOneYearAfter(t *testing.T) {
+func TestOneYearAfter(t *testing.T) {
 	testDate := time.Now().Add(time.Year * 1)
 
 	result, err := age.GetAge(testDate.Format("2006-Jan-07"))
@@ -34,7 +34,7 @@ func testOneYearAfter(t *testing.T) {
 	assert.NotNil(t, err)
 }
 
-func testWrongFormat(t *testing.T) {
+func TestWrongFormat(t *testing.T) {
 	testDate := time.Now().Add(time.Year * 1)
 
 	result, err := age.GetAge("2006-01-07")
